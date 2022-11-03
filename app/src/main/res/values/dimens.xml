@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margen_personalizado">180dp</dimen>
+    <dimen name="padding_icono">10dp</dimen>
+    <dimen name="altura_texto">100dp</dimen>
+</resources>
