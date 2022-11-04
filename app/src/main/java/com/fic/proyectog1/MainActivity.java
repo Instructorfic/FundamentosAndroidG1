@@ -7,27 +7,37 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText etNombreUsuario, etContrasenia;
+    final String MAIN_ACTIVITY_TAG = MainActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_linear_layout);
 
-        Button btnInicioSesion = findViewById(R.id.btnIniciarSesion);
-        EditText etNombreUsuario = findViewById(R.id.etNombreUsuario);
-        EditText etContrasenia = findViewById(R.id.etContrasenia);
+        Button btnInicioSesion = findViewById(R.id.btnInicioSesion);
+        etNombreUsuario = findViewById(R.id.etNombreUsuario);
+        etContrasenia = findViewById(R.id.etContrasenia);
 
-        btnInicioSesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                escribirLog();
-            }
-        });
+        btnInicioSesion.setOnClickListener(accionBotonIniciarSesion);
     }
 
+    public View.OnClickListener accionBotonIniciarSesion = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            mostrarToast(etNombreUsuario.getText().toString());
+            escribirLog();
+        }
+    };
+
     public void escribirLog(){
-        Log.d("MainActivity","Clic en el botón de inicio de sesión");
+        Log.d(MAIN_ACTIVITY_TAG,"Clic en el botón de inicio de sesión");
+    }
+
+    public void mostrarToast(String texto){
+        Toast.makeText(MainActivity.this, texto, Toast.LENGTH_LONG).show();
     }
 }
