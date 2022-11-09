@@ -2,6 +2,7 @@ package com.fic.proyectog1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
     public View.OnClickListener accionBotonIniciarSesion = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            mostrarToast(etNombreUsuario.getText().toString());
+            mostrarActividad();
+            //mostrarToast(etNombreUsuario.getText().toString());
             escribirLog();
         }
     };
@@ -39,5 +41,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void mostrarToast(String texto){
         Toast.makeText(MainActivity.this, texto, Toast.LENGTH_LONG).show();
+    }
+
+    public void mostrarActividad(){
+        Intent intencionMostrarActividad = new Intent(getApplicationContext(),HomeActivity.class);
+        startActivity(intencionMostrarActividad);
     }
 }
