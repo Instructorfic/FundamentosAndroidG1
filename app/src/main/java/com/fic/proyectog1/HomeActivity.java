@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity {
 
+    final String HOME_ACTIVITY_TAG = HomeActivity.class.getSimpleName();
     Button btnVisualizarSitioWeb,btnMarcarNumero, btnVisualizarConfiguracionInalambrica;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,11 @@ public class HomeActivity extends AppCompatActivity {
         btnVisualizarSitioWeb.setOnClickListener(accionVisualizarSitioWeb);
         btnMarcarNumero.setOnClickListener(accionMarcarNumero);
         btnVisualizarConfiguracionInalambrica.setOnClickListener(accionVisualizarConfiguracionInalambrica);
+
+        //Obtener datos enviados mediante una intención
+        Intent obtenerDatosIntencion = getIntent();
+        Log.i(HOME_ACTIVITY_TAG,obtenerDatosIntencion.getStringExtra("nombreUsuario"));
+        Log.i(HOME_ACTIVITY_TAG,obtenerDatosIntencion.getStringExtra("contraseniaUsuario"));
     }
 
     public View.OnClickListener accionVisualizarSitioWeb = new View.OnClickListener() {

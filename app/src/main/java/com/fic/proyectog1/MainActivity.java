@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void mostrarActividad(){
         Intent intencionMostrarActividad = new Intent(getApplicationContext(),HomeActivity.class);
+        intencionMostrarActividad.putExtra("nombreUsuario",etNombreUsuario.getText().toString());
+        intencionMostrarActividad.putExtra("contraseniaUsuario",etContrasenia.getText().toString());
         startActivity(intencionMostrarActividad);
     }
 }
