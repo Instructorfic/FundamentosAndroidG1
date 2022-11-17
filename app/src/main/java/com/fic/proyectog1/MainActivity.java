@@ -3,6 +3,7 @@ package com.fic.proyectog1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,8 +46,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void mostrarActividad(){
         Intent intencionMostrarActividad = new Intent(getApplicationContext(),HomeActivity.class);
+        //Envío de un dato
+        intencionMostrarActividad.setData(Uri.parse("http://www.google.com"));
+
+        //Envío de más de un dato utilizando extras
         intencionMostrarActividad.putExtra("nombreUsuario",etNombreUsuario.getText().toString());
         intencionMostrarActividad.putExtra("contraseniaUsuario",etContrasenia.getText().toString());
+
+        //Envío de más de un dato utilizando Bundle
+        Bundle paqueteDatos = new Bundle();//Crear instancia de paquete de datos
+        paqueteDatos.putString("materia","Algoritmos");//Preparar datos
+        paqueteDatos.putDouble("calificacion",10);//Preparar datos
+        intencionMostrarActividad.putExtras(paqueteDatos);//Asignar paquete a intención
+
         startActivity(intencionMostrarActividad);
     }
 }

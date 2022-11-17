@@ -28,8 +28,20 @@ public class HomeActivity extends AppCompatActivity {
 
         //Obtener datos enviados mediante una intención
         Intent obtenerDatosIntencion = getIntent();
+
+        //Único dato
+        Log.i(HOME_ACTIVITY_TAG, obtenerDatosIntencion.getData().toString());
+
+        //Extras para extracción de datos
         Log.i(HOME_ACTIVITY_TAG,obtenerDatosIntencion.getStringExtra("nombreUsuario"));
         Log.i(HOME_ACTIVITY_TAG,obtenerDatosIntencion.getStringExtra("contraseniaUsuario"));
+
+        //Bundle para extracción de datos
+        Bundle datos = obtenerDatosIntencion.getExtras();
+        Log.i(HOME_ACTIVITY_TAG,datos.getString("materia"));
+        Log.i(HOME_ACTIVITY_TAG, String.valueOf(datos.getDouble("calificacion")));
+
+
     }
 
     public View.OnClickListener accionVisualizarSitioWeb = new View.OnClickListener() {
